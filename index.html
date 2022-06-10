@@ -123,12 +123,9 @@
         var container = document.getElementById("mynetwork");
         var network
 
-
         function draw() {
             var nodes = new vis.DataSet(nodelist);
-
             var edges = new vis.DataSet(edgesList);
-
             var data = {
                 nodes: nodes,
                 edges: edges,
@@ -212,10 +209,12 @@
                 size: eleDrag.dataset.size,
             }
             nodelist.push(nodeData)
-            console.log(network.get())
             draw()
             return false
         }
+        // 保存的数据形式
+        // nodelist = network.body.data.nodes.get()
+        // edgesList = network.body.data.edges.get()
     </script>
 </body>
 

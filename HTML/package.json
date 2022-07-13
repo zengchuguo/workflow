@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "vis-network": "^9.1.2",
+    "xml-js": "^1.6.11"
+  }
+}

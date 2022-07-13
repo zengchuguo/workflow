@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Network</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        #mynetwork {
+            width: 600px;
+            height: 400px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+
+<body onload="draw();">
+    <div>
+        <img class="img" style="width: 50px;" draggable="true" data-shape="image" data-size="50" data-name="数据同步"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAADLCAMAAAB04a46AAAAjVBMVEX///8AAADGxsbDw8PIyMjMzMzNzc37+/v4+Pjp6enU1NTQ0NDX19fw8PDh4eHm5uaxsbHc3Ny8vLxiYmKpqamXl5e4uLhqampZWVmSkpIqKio+Pj6MjIwdHR2enp4QEBBGRkY1NTWBgYF1dXVNTU0kJCQVFRVzc3OFhYVBQUExMTE5OTlTU1NdXV0hISGGCNVfAAAMTklEQVR4nOVd54KqOhBeSAJIExR1bdi2t/d/vBuQEhAkgZDEc79f57i6m89JZibTeHriBW+qR4vz7+fr/qBp2uFtvzmudnEQeha3P6Ec3OX5+aS1YfOzA1PZS+QOT19/tlImMY/+IfLu+khFOsNx7cteMQeY7u6NhfUVp8CTvfBhsM8bdtZXXELZi+8NK/jqyzrF/DGphx+DWD8qdfAynHZK/bHO+mzLh3aCSDYZekA6i02Lnwcx7IjTJifwCEKfPHOnjTGXTasTizFoY7yq7cvZw+z2XSDZ5NphncejrSl80PUeLjkTFrIZNuMyMm2MD9kcGzD9Hp+3pq1l07zBTARtjFg20Rp2gnhrGpRNlYQ5F8Zb0xSy556Q451jY8rmmyMUSRvjWTbhDIZg3qooOCCctxrHXJQZq+BbNuunJyiDtwKb3ZbDW9Mmcnn7snhL1uzeQRpxDcgkfpLHW/uSyHuU2Bo15N3TxN1LmiErxSLDcangVU79xEQ2b01bSSHOMUPUGzLcmFg26RQz4bxd2ZQzCGd+ks04h+BQuxobPcXqVrebnj8LojgKZlPOqXUFNHqJQ0XoHtjNyZqblw+eiSeRoUUanIFnPZkWJt1YZ7TmJXdVNBuJ/fZetnLNx9dhKtVTA282B97SfdVe4JBvfECBJxjs4CLZDPric2Ai4kEFrg0NVzmylz8Ag3a7gOz/eBgQtfFkr30Y+l9qItlLH4jeTtyr7JUPRF8FJzojzB89N7vsyCorPp/rZbX7ftb8JGHxA2DgJU9rjkev0IW8XFkfHDJNVhN6H+KPpdPzIGwtpRv0IM6/Dn1M5KkWq2qKXnoQl8SgJ3LiZi1GwV5I8mB++jJbdj1EyH41f6wjrn1my67Xkr8yE19JWX9/vKervo2FM9eRCC1g5IFNHEQNCplVrz/4zawEa2PPY7kvd7BnjDZLqeUbBS4bcYUyZgPBaNAe7WrWDkbn7dGs2R2wEX/cwPIN2Po7/mQvlx/OTMQlFnDyBltd5D9EXGPKnspeLE8w7XXZi+WK/y1xljDzv3TGtSMD8bGbpMWCoRpqL3utFPh6We0WUby7zE8d72RIJvWe2SQIm51DxlY8N3q/93b6K5riLmujhTLOrQeUXuRKX1L2re43bFs39SnnMLJqNHzcywV6zSs/0hJXNxDx09Wf4jWOK1l2fCpHIJoPJTY0zsikoQD3QBl7U7PC7UQbLHZON5+l9NiVqtbOsGVxPW+nMdFd0tSLq78z1ubWiwS0Pd3n1DLkP33GeNYVNN1mV8eQ71fLniXoYS1nrNN8SJFs6WntDCi8N2vioykGkt+acJrHw3tMqmb5l+YjkuimeF0tEKc5AVUB0pRByerC+QkYs10dqE7sofjdcny3X4cr6wSVGU1/3RpDhiVfjdMnTjrvFKm0X9G0P0abdUNa9O7s6VIo669ozHlWJJduay6Q9mXsqZw68cc6nUBRd/LPvp4ZC4jxXJ1DlEwRMeZjLGjWMlHl2tmoM7pF28YCZ3cRrkynghuz2O3vfSZ4mDoh865igdEc9pc4lDCUkGDe5RCPoN9efxeGEJoNKCuTT13fO1+P/bhbTqQ+CqgMJXYqOF7j8ucxlDyXLUVZuNg1WMbjkkU7q0A6RWmpumJ41vAp6m/8r1z9UaqtLqPiDe5OUUbcKYq72pb+rf2gwoBREoXCvnS+Vb/Hqwu0WSthMAuF3Z2Ysfq3kiv4CAyrqPeg2Ixh3+GFah3wK4o2hA2NV2H3oq7iAwGI2bo/VG+3f/4NgT8R+RLKAXkOqyOnypjwGxSFE7Q+BuMdXfzcPVrku5e2YuDJY9rv6j6d1MpL8unNDsMTkJTd6U/EKAj6OZj0/sxuxIUPRnFTo09jUM/NkDouuhPrbJUMj6iYUhLnm//jjtxrZyjlp5S5ola8QB5AZwiGUY24O4y3ZD7Io6kbhs809yKeVu9fD0S8cEtYPOumuqj0Cho9EPGiyIlBG90quL/sSJe5SWWe6NOOLftmv3FkiiDW+eYVdZHXcLJ0HdcCsKW7b+Y3/Ud42HC+PxksUPXCQuqHPJQpLWfCgqypg2XYYSXyTP7A7LF/5CGbFsRQLEuWP1YNQhajUzDg1oDMG2O5URHEq/Yg9wzUvZaSyATIUI9SNoAcqgrczLaPcrHlZlzDiUf6D5QJ9HpaItMYCjy0iwZe3S51orBox9oP8stuY+zJsiwPYzL1MUIM94rkn/iV6XQywT/G7xLmAAFWlVTs9XrFYO7XFQNoTCshGroOglDXQR26fvsifglCZLuhj7+IkbXF1eeit+WwTeJFP/LcnPih7UCCICuyjyLHDad4H3CkSyDduwxPY8mJn+o/KGrk51DvRbftK9Ch4fr8Cyvcpn17B3kOmdTqlue7dplifQGIF3HyC4BOIn9+zFNvk/7tBb9r/s2ahA6WMBYLUTf0Fxv4YJPgRl9HNjfpx0xz7wp/PXjCnMtTDCtjsk7nYDZbBimWyxmAhoEQ4sM/+ZO273EwAJMZQ5VlYcnnqKK5IKhNW9iX/3973Xwf5+dFwJO9boRCL8FFS+KhxgDSpNlOq8WSF/dE9IYvirzpF0n2oLp+gzar/H3mdeZT8tAdP7RrTQ2ACt/tUtXdiL5yZj/jxzwlb09GdPnMqZMcaqMo9N1UiEOHoff+zNveYXU3ktw9O1NlRlkMFhFyQ8vu5tSX9fp9i0/K/pmvxDPuwOV+3k0fFQoclUd5VcoN0WRUAdbpBlgugTEC75S6wbUJoBD2lSJR5qvnBCBVZ+o8Uef83Jlm7iEv385zqo43IvpWF7nIEV0x5Hc0kqwr1F0e1D2jft9ARAXc1shf/flYLD4o2P8ueRnxu9SH6njLvr1mkcRLU46dEnx+Z5fuWVkXfXTmWMcPO+t+020akaOGVlWzBBG4MeaH7fF7Q34f+4D73a2BOuqv4a2bXX4lXulNB3W/FYFKMehXrBuG4YBoRUzRisaXOabeN6kzafmFqOKZ7m6kB1FA9DJlRxpCpMeFL38QIPJE6L2UnN8WRDEqjsprAwdolPv9Uqg/CJ0gt4SBCJFj6j2cObc1eGRUe9PiJg4oKMa8RsQ3g8/BOvn0txCJYwBmHdegzXOgasr0p5EEhLlwDxXvFCJjGcfjW7QcgLFnILzDG9QaUJeNLCDKK0e+ao7aqI7bDdh2+6SVNzSiehfmO9IbA2soyPT4USjTOgCDhrNafwsCDVMFsLFaRlEULAFKAmsFTTQ7Xd8wd8RwbFkzPfFWxYY6ryLfq12g50cYouxrWohSZk2gV3Bmf94pNqvIyax35t6+1t0coaAWeZsFh/SV65tdllIwrsH2WzdHIACt89p2IuGWmjjG+sr1uksuUonTmrSWbQnZOqzz4DOabdpMnihQlrqYLYtEFI0Kx/V59fydXsWKSCQEO0Eeahsos/9txBPXYxmvV3cedXl0UAL8voggC8U5as2gLW5qPY+Jj4JpLVr7rM9G8U7ZZAkA2qrV9vtJCsypLYD+FijEtwC11+p1ZfWhEZxaqF90mfq7BdQBuO61Fz7ZDfZr1YROvdMpRJ4IvfURQlsBIWQWAIaIa8cpT2G0m/WVgDgqNdhiETQLRyTz7TN5S/8TEUelA2Cbatt+MSVglOmyvWOAiqqX7LIUAKxl5BbNwo28f03bOFjf6URcea+GyAH7dBIL0ZzzIreQnGqIZiX1xhikaDDu8wx34o0FUB5qvt7FkmxC5tFKvYhmYI005phSWLW8xOslc1Yx9TiNrwpJltwF0HsnkSynkzrKjnkZRMZuuhGdY+kCZ/BbGoXeRT3f7FE1ei5b3kNyhleEHfW4+WaXGmOpA/CY42yF96WeFXk1J1SkAEBOhTDmXalDmPpsb6oQB4hj/Y85vWPVM/2mBHEAHN7Vbp7dKnaYduGNUbnGCAC5VTyRyAobb3EtcZPtnSdlnSOwvsLyjSa5G1+SiWOBONOR+5esqa3XBZ9G3KXxTsuXxXRteSGqkkeLuRyBJ9X6vtCmTmviIqK1SoarllTphzz6M3qQr0teIGldEukcpufbqG9bXT/KWJG5UzUmMpjeNDR6dxUyUMacw4m49lNKWBPfddAI/MG124xvsx13mCn/IX2lJN+kv9QOffWk3I6kldh37aThsNZB3MU0aVpEyEn4Ki3iTpimhb+EyXTq+6Hr2o5R1kXBa/4VIcOx3aSRPGkjtyxTpHz/Az8Y+o1gtwUKAAAAAElFTkSuQmCC" />
+        <img class="img" style="width: 50px; margin-left: 50px" draggable="true" data-shape="image" data-name="sql"
+            data-size="30"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAI7NOrpbdJrXJdRqNHZOSbo4Nq6d80YkZNyR_AhypyQ&s" />
+    </div>
+    <div id="mynetwork"></div>
+    <script type="text/javascript">
+        let nodelist = [
+
+        ]
+        let edgesList = [
+        ]
+        var container = document.getElementById("mynetwork");
+        var network
+
+        function draw() {
+            var nodes = new vis.DataSet(nodelist);
+            var edges = new vis.DataSet(edgesList);
+            var data = {
+                nodes: nodes,
+                edges: edges,
+            };
+            var options = {
+                layout: {
+                    hierarchical: {
+                        enabled: true,
+                        direction: 'LR',
+                        sortMethod: 'directed'
+                    },
+                },
+                nodes: {
+                    shapeProperties: {
+                        useBorderWithImage: true,
+                    },
+                    color: '#fff',
+                    imagePadding: {
+                        left: 10,
+                        top: 10,
+                        bottom: 10,
+                        right: 10
+                    },
+                },
+                edges: {
+                    arrows: {
+                        to: true
+                    },
+                    color: 'blue'
+                },
+                manipulation: {
+                    enabled: false,
+                    initiallyActive: false,
+                    addNode: false,
+                    addEdge(d, callback) {
+                        callback(d);
+                    }
+                },
+                interaction: {
+                    dragView: false
+                },
+            };
+            network = new vis.Network(container, data, options);
+
+            // 能限制添加的edag的节点
+            network.on("click", function (node) {
+                network.addEdgeMode()
+            });
+        }
+
+        const img = document.getElementsByClassName('img')
+        for (let i = 0; i < img.length; i++) {
+            img[i].ondragstart = (e) => {
+                e.dataTransfer.effectAllowed = 'move'
+                e.dataTransfer.setData("text", e.target.innerHTML);
+                e.dataTransfer.setDragImage(e.target, 0, 0);
+                eleDrag = e.target;
+                console.log(eleDrag)
+                return true;
+            }
+            img[i].ondragend = function (ev) {
+                ev.dataTransfer.clearData("text");
+                eleDrag = null;
+                return false
+            }
+        }
+
+        container.ondragover = function (ev) {
+            ev.preventDefault();
+            return true;
+        };
+        container.ondragenter = function (ev) {
+            /*拖拽元素进入目标元素头上的时候*/
+            this.style.color = "#ffffff";
+            return true;
+        };
+        container.ondrop = function (ev) {
+            let nodeData = {
+                name: eleDrag.dataset.name,
+                shape: eleDrag.dataset.shape,
+                image: eleDrag?.src,
+                size: eleDrag.dataset.size,
+            }
+            nodelist.push(nodeData)
+            edgesList = network.body.data.edges.get()
+            draw()
+            return false
+        }
+    </script>
+</body>
+
+</html>
